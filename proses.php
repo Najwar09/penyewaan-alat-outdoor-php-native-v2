@@ -11,7 +11,7 @@ if ($_GET['id'] == 'registrasi') {
         $pass = $_POST['pass'];
         $level = "user";
         
-        $query = "INSERT INTO login VALUES('','$nama','$username','$pass','$level')";
+        $query = "INSERT INTO tbl_login_212303 VALUES('','$nama','$username','$pass','$level')";
 	    mysqli_query($koneksi, $query);
 
 	    echo '<script>alert("Data telah berhasil di tambahkan!");history.back();</script>';

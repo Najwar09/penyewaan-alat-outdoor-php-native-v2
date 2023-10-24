@@ -3,7 +3,7 @@
 $host = 'localhost';  // Lokasi server database (biasanya localhost)
 $username = 'root';  // Nama pengguna database
 $password = '';      // Kata sandi pengguna database (biasanya kosong)
-$database = 'penyewaan-alat-outdoor-v2';  // Nama database yang ingin Anda akses
+$database = 'db_outdoor_212303';  // Nama database yang ingin Anda akses
 
 // Buat koneksi
 $koneksi = new mysqli($host, $username, $password, $database);
