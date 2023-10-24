@@ -6,8 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Halaman Login</title>
 </head>
-<body style="background-color:#E5E0E0;
-;">
+<body style="background-color:#E5E0E0;">
     <div class="container">
         <div class="row">
             <!-- Logo di sebelah kiri -->
@@ -31,9 +30,9 @@
                                 <input type="password" class="form-control" id="password" name="password" required>
                             </div>
                             <button type="submit" class="btn btn-primary">Login</button>
+                            <a href="registrasi.php" class="btn btn-primary">Sign In</a>
                         </form>
 
-                        <a href="registrasi.php">Sign In</a>
                     </div>
                 </div>
             </div>

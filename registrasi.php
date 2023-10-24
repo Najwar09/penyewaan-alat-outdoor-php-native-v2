@@ -40,9 +40,9 @@
                             </div>
 
                             <button type="submit" class="btn btn-primary" name="save">Save</button>
+                            <a href="login.php" class="btn btn-danger">Back</a>
                         </form>
 
-                        <a href="login.php">Back</a>
                     </div>
                 </div>
             </div>
