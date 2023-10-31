@@ -20,14 +20,14 @@
                     <div class="col-md-6 mt-5">
 
                     <!-- form login -->
-                        <form class="mb-2">
+                        <form class="mb-2" method="post" action="proses.php?id=login">
                             <div class="form-group">
                                 <label for="username">Username</label>
-                                <input type="text" class="form-control" id="username" name="username" required>
+                                <input type="text" class="form-control" id="username" name="user" required>
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password" name="password" required>
+                                <input type="password" class="form-control" id="password" name="pass" required>
                             </div>
                             <button type="submit" class="btn btn-primary">Login</button>
                             <a href="registrasi.php" class="btn btn-primary">Sign In</a>

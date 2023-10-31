@@ -46,7 +46,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" onclick="return confirm('Apakah anda ingin logout ?');" href="#">Logout</a>
+                    <a class="nav-link" onclick="return confirm('Apakah anda ingin logout ?');" href="../../login.php">Logout</a>
                 </li>
             </ul>
         </div>
