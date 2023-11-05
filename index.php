@@ -36,11 +36,11 @@ $hasil = mysqli_query($koneksi, $query);
                                     </li>
                                     <?php if ($isi['212303_status'] == 'Tersedia') { ?>
                                         <li class="list-group-item bg-primary text-white">
-                                            <i class="fa fa-check"></i> Available
+                                            <i class="fa fa-check"></i> Tersedia
                                         </li>
                                     <?php } else { ?>
                                         <li class="list-group-item bg-danger text-white">
-                                            <i class="fa fa-close"></i> Not Available
+                                            <i class="fa fa-close"></i> Tidak Tersedia
                                         </li>
                                     <?php } ?>
                                     <li class="list-group-item bg-dark text-white">

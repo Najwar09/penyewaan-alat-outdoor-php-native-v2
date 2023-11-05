@@ -41,12 +41,7 @@
 
             <ul class="navbar-nav my-2 my-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fa fa-user"> </i> Hallo,
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" onclick="return confirm('Apakah anda ingin logout ?');" href="../../login.php">Logout</a>
+                    <a class="nav-link" onclick="return confirm('Apakah anda ingin logout ?');" href="../logout.php">Logout</a>
                 </li>
             </ul>
         </div>

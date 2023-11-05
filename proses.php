@@ -38,20 +38,29 @@ if ($_GET['id'] == 'login') {
     $hasil = mysqli_query($koneksi, $query);
     $isi = mysqli_fetch_assoc($hasil);
 
-
-
     if (mysqli_num_rows($hasil) == 1) {
+
         if (password_verify($pass, $isi['212303_password'])) {
-            echo '<script>alert("Login Sukses");window.location="admin/index.php";</script>';
+            session_start();
+            // membuat session user
+            $_SESSION['user'] = $isi;
+            if ($isi['212303_level'] == 'admin') {
+                echo '<script>alert("Login Sukses");window.location="admin/index.php";</script>';
+            } else {
+                echo '<script>alert("Login Sukses!");window.location="index.php";</script>';
+            }
         } else {
-            echo '<script>alert("gagal login!");window.location="login.php";</script>';
+
+            echo '<script>alert("gagal login!");window.location="index.php";</script>';
         }
     } else {
-        echo '<script>alert("gagal login!");window.location="login.php";</script>';
+        echo '<script>alert("gagal login!");window.location="index.php";</script>';
     }
 }
 
 
+
+// booking
 if ($_GET['id'] == 'booking') {
     $tanggalAwal = $_POST['tanggal'];
     $tanggalAkhir = $_POST['tanggal_kembali'];
@@ -88,34 +97,33 @@ if ($_GET['id'] == 'konfirmasi') {
 
 
 
-        $dir = 'images/';
-        $tmp_name = $_FILES['gambar']['tmp_name'];
-        $temp = explode(".", $_FILES["gambar"]["name"]);
-        $newfilename = round(microtime(true)) . '.' . end($temp);
-        $target_path = $dir . basename($newfilename);
-        $allowedImageType = array("image/gif",   "image/JPG",   "image/jpeg",   "image/pjpeg", "image/png",   "image/x-png");
+    $dir = 'images/';
+    $tmp_name = $_FILES['gambar']['tmp_name'];
+    $temp = explode(".", $_FILES["gambar"]["name"]);
+    $newfilename = round(microtime(true)) . '.' . end($temp);
+    $target_path = $dir . basename($newfilename);
+    $allowedImageType = array("image/gif",   "image/JPG",   "image/jpeg",   "image/pjpeg", "image/png",   "image/x-png");
 
-        if ($_FILES['gambar']["error"] > 0) {
-            echo '<script>alert("Error file");history.go(-1)</script>';
-            exit();
-        } elseif (round($_FILES['gambar']["size"] / 1024) > 4096) {
-            echo '<script>alert("WARNING !!! Besar Gambar Tidak Boleh Lebih Dari 4 MB !");history.go(-1)</script>';
-            exit();
-        } else {
-            if (move_uploaded_file($tmp_name, $target_path)) {
+    if ($_FILES['gambar']["error"] > 0) {
+        echo '<script>alert("Error file");history.go(-1)</script>';
+        exit();
+    } elseif (round($_FILES['gambar']["size"] / 1024) > 4096) {
+        echo '<script>alert("WARNING !!! Besar Gambar Tidak Boleh Lebih Dari 4 MB !");history.go(-1)</script>';
+        exit();
+    } else {
+        if (move_uploaded_file($tmp_name, $target_path)) {
 
-                $id_booking = $_POST['id_booking'];
-                $gambar = $newfilename;
+            $id_booking = $_POST['id_booking'];
+            $gambar = $newfilename;
 
 
-                $query = "INSERT INTO tbl_pembayaran_212303 VALUES('','$id_booking','$gambar')";
-                mysqli_query($koneksi, $query);
+            $query = "INSERT INTO tbl_pembayaran_212303 VALUES('','$id_booking','$gambar')";
+            mysqli_query($koneksi, $query);
 
-                $konfirmasi = 'Sedang di proses';
-                $query2 = "UPDATE tbl_booking_212303 SET 212303_konfirmasi = '$konfirmasi' WHERE 212303_id_booking = '$id_booking'";
-                mysqli_query($koneksi, $query2);
-                echo '<script>alert("Kirim Sukses , Pembayaran anda sedang diproses");history.go(-2);</script>';
-            }
+            $konfirmasi = 'Sedang di proses';
+            $query2 = "UPDATE tbl_booking_212303 SET 212303_konfirmasi = '$konfirmasi' WHERE 212303_id_booking = '$id_booking'";
+            mysqli_query($koneksi, $query2);
+            echo '<script>alert("Kirim Sukses , Pembayaran anda sedang diproses");history.go(-2);</script>';
         }
-    
+    }
 }

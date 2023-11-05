@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 include 'koneksi.php';
 include 'header.php';
 $query = "SELECT * FROM tbl_alat_212303 ORDER BY 212303_id_alat ASC";

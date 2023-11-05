@@ -1,8 +1,12 @@
 <?php
 
-session_start();
 require 'koneksi.php';
 include 'header.php';
+
+if (empty($_SESSION['user'])) {
+    echo '<script>alert("Harap login !");window.location="index.php"</script>';
+  }
+
 
 $id_alat = $_GET['id'];
 $query = "SELECT * FROM tbl_alat_212303 WHERE 212303_id_alat = '$id_alat'";
@@ -62,7 +66,7 @@ $isi = mysqli_fetch_assoc($hasil);
                             <input type="date" name="tanggal_kembali" id="" required class="form-control" placeholder="Nama Anda">
                         </div>
 
-                        <input type="hidden" value="<?php echo $_SESSION['USER']['id_login']; ?>" name="id_login">
+                        <!-- <input type="hidden" value="<?php echo $_SESSION['USER']['id_login']; ?>" name="id_login"> -->
                         <input type="hidden" value="<?php echo $isi['212303_id_alat']; ?>" name="id_alat">
                         <input type="hidden" value="<?php echo $isi['212303_harga']; ?>" name="total_harga">
                         <hr />
