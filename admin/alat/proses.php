@@ -25,8 +25,9 @@ if ($_GET['aksi'] == 'tambah') {
             $deskripsi = $_POST['deskripsi'];
             $status = $_POST['status'];
             $gambar = $newfilename;
+            $nama = $_POST['nama'];
 
-            $query = "INSERT INTO tbl_alat_212303 VALUES('','$harga','$deskripsi','$status','$gambar')";
+            $query = "INSERT INTO tbl_alat_212303 VALUES('','$nama','$harga','$deskripsi','$status','$gambar')";
             mysqli_query($koneksi, $query);
 
             echo '<script>alert("Data berhasil di tambahkan!");window.location="index.php";</script>';

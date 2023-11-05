@@ -50,3 +50,72 @@ if ($_GET['id'] == 'login') {
         echo '<script>alert("gagal login!");window.location="login.php";</script>';
     }
 }
+
+
+if ($_GET['id'] == 'booking') {
+    $tanggalAwal = $_POST['tanggal'];
+    $tanggalAkhir = $_POST['tanggal_kembali'];
+
+    $dateAwal = new DateTime($tanggalAwal);
+    $dateAkhir = new DateTime($tanggalAkhir);
+
+    $selisih = $dateAwal->diff($dateAkhir)->format("%a");
+
+
+    $total = $_POST['total_harga'] * $selisih;
+    $total_harga = $total;
+
+    $kode_booking = time();
+    $id_login = $_POST['id_login'];
+    $id_alat = $_POST['id_alat'];
+    $ktp = $_POST['ktp'];
+    $nama = $_POST['nama'];
+    $alamat = $_POST['alamat'];
+    $no_tlp = $_POST['no_tlp'];
+    $tanggalsewa = $_POST['tanggal'];
+    $tanggal_pengembalian = $_POST['tanggal_kembali'];
+    $total_bayar = $total_harga;
+    $konfirmasi = "Belum Bayar";
+    $tanggal_inp = date('Y-m-d');
+
+    $query = "INSERT INTO tbl_booking_212303 VALUES('','$kode_booking','$id_login','$id_alat','$nama','$alamat','$ktp','$no_tlp','$tanggalsewa','$tanggal_pengembalian','$total_bayar','$konfirmasi','$tanggal_inp')";
+    $hasil = mysqli_query($koneksi, $query);
+    echo '<script>alert("Anda Sukses Booking silahkan Melakukan Pembayaran");
+    window.location="bayar.php?id=' . time() . '";</script>';
+}
+
+if ($_GET['id'] == 'konfirmasi') {
+
+
+
+        $dir = 'images/';
+        $tmp_name = $_FILES['gambar']['tmp_name'];
+        $temp = explode(".", $_FILES["gambar"]["name"]);
+        $newfilename = round(microtime(true)) . '.' . end($temp);
+        $target_path = $dir . basename($newfilename);
+        $allowedImageType = array("image/gif",   "image/JPG",   "image/jpeg",   "image/pjpeg", "image/png",   "image/x-png");
+
+        if ($_FILES['gambar']["error"] > 0) {
+            echo '<script>alert("Error file");history.go(-1)</script>';
+            exit();
+        } elseif (round($_FILES['gambar']["size"] / 1024) > 4096) {
+            echo '<script>alert("WARNING !!! Besar Gambar Tidak Boleh Lebih Dari 4 MB !");history.go(-1)</script>';
+            exit();
+        } else {
+            if (move_uploaded_file($tmp_name, $target_path)) {
+
+                $id_booking = $_POST['id_booking'];
+                $gambar = $newfilename;
+
+
+                $query = "INSERT INTO tbl_pembayaran_212303 VALUES('','$id_booking','$gambar')";
+                mysqli_query($koneksi, $query);
+
+                $konfirmasi = 'Sedang di proses';
+                $query2 = "UPDATE tbl_booking_212303 SET 212303_konfirmasi = '$konfirmasi' WHERE 212303_id_booking = '$id_booking'";
+                mysqli_query($koneksi, $query2);
+                echo '<script>alert("Kirim Sukses , Pembayaran anda sedang diproses");history.go(-2);</script>';
+            }
+        }
+    
+}

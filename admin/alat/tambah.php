@@ -23,11 +23,13 @@ include '../../koneksi.php';
                     <div class="row">
 
                         <div class="col-sm-6">
-
-
+                        <div class="form-group row">
+                                <label class="col-sm-3"><b>Nama</b></label>
+                                <input type="text" class="form-control col-sm-9" name="nama" placeholder="Masukkan Nama Alat Outdoor">
+                            </div>
 
                             <div class="form-group row">
-                                <label class="col-sm-3">Harga</label>
+                                <label class="col-sm-3"><b>Harga</b></label>
                                 <input type="text" class="form-control col-sm-9" name="harga" placeholder="Isi Harga">
                             </div>
 
@@ -36,12 +38,12 @@ include '../../koneksi.php';
                         <div class="col-sm-6">
 
                             <div class="form-group row">
-                                <label class="col-sm-3">Deskripsi</label>
+                                <label class="col-sm-3"><b>Deskripsi</b></label>
                                 <input type="text" class="form-control col-sm-9" name="deskripsi" placeholder="Isi Deskripsi">
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-sm-3">Status</label>
+                                <label class="col-sm-3"><b>Status</b></label>
                                 <select class="form-control col-sm-9" name="status">
                                     <option value="" disabled selected>Pilih Status</option>
                                     <option>Tersedia</option>
@@ -50,7 +52,7 @@ include '../../koneksi.php';
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-sm-3">Gambar</label>
+                                <label class="col-sm-3"><b>Gambar</b></label>
                                 <input type="file" accept="image/*" class="form-control col-sm-9" name="gambar" placeholder="Isi Gambar">
 
                             </div>

@@ -42,17 +42,7 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="blog.php">Daftar Alat Outdoor </a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="kontak.php">Kontak Kami</a>
-                </li>
-            <?php if(!empty($_SESSION['USER'])){?>
-                <li class="nav-item active">
-                    
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="profil.php">Profil</a>
-                </li>
-            <?php }?>
+               
             </ul>
             <?php if(!empty($_SESSION['USER'])){?>
             <ul class="navbar-nav my-2 my-lg-0">

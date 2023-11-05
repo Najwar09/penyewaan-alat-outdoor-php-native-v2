@@ -21,6 +21,7 @@ include '../../koneksi.php';
                         <tr>
                             <th>No.</th>
                             <th>Gambar</th>
+                            <th>Nama</th>
                             <th>Harga</th>
                             <th>Status</th>
                             <th>Deskripsi</th>
@@ -29,7 +30,7 @@ include '../../koneksi.php';
                     </thead>
                     <tbody>
                         <?php
-                        $query = "SELECT * FROM tbl_alat_212303 ORDER BY 212303_id_alat ASC";
+                        $query = "SELECT * FROM tbl_alat_212303 ORDER BY 212303_id_alat DESC";
                         $hasil = mysqli_query($koneksi,$query);
                         $no = 1;
 
@@ -38,6 +39,7 @@ include '../../koneksi.php';
                             <tr>
                                 <td><?php echo $no; ?></td>
                                 <td><img src="../../images/<?= $isi['212303_gambar']; ?>" class="img-fluid" style="width:200px;"></td>
+                                <td><?php echo $isi['212303_nama']; ?></td>
                                 <td><?php echo $isi['212303_harga']; ?></td>
                                 <td><?php echo $isi['212303_status']; ?></td>
                                 <td><?php echo $isi['212303_deskripsi']; ?></td>

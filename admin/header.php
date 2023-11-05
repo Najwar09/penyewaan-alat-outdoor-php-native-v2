@@ -35,7 +35,7 @@
                     <a class="nav-link text-light" href="./alat/index.php">Daftar Alat</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link text-light" href="#">Daftar Booking</a>
+                    <a class="nav-link text-light" href="./booking/booking.php">Daftar Booking</a>
                 </li>
             </ul>
 
