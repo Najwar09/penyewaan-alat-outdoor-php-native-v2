@@ -3,7 +3,7 @@
 include '../header2.php';
 include '../../koneksi.php';
 session_start();
-if (empty($_SESSION['USER'])) {
+if (empty($_SESSION['user'])) {
     echo '<script>alert("login dulu");window.location="index.php"</script>';
 }
 $kode_booking = $_GET['id'];

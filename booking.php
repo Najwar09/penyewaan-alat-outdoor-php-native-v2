@@ -66,7 +66,7 @@ $isi = mysqli_fetch_assoc($hasil);
                             <input type="date" name="tanggal_kembali" id="" required class="form-control" placeholder="Nama Anda">
                         </div>
 
-                        <!-- <input type="hidden" value="<?php echo $_SESSION['USER']['id_login']; ?>" name="id_login"> -->
+                        <input type="hidden" value="<?php echo $_SESSION['user']['212303_id_login']; ?>" name="id_login">
                         <input type="hidden" value="<?php echo $isi['212303_id_alat']; ?>" name="id_alat">
                         <input type="hidden" value="<?php echo $isi['212303_harga']; ?>" name="total_harga">
                         <hr />

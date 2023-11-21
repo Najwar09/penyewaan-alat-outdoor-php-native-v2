@@ -1,7 +1,7 @@
 <?php
 
 if (empty($_SESSION['user'])) {
-    echo '<script>alert("Harap login !");window.location="index.php"</script>';
+    echo '<script>alert("Harap login !");"</script>';
   }
 require 'koneksi.php';
 include 'header.php';

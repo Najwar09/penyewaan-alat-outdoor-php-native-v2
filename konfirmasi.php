@@ -1,9 +1,8 @@
 <?php
 
-session_start();
 require 'koneksi.php';
 include 'header.php';
-if (empty($_SESSION['USER'])) {
+if (empty($_SESSION['user'])) {
     echo '<script>alert("Harap Login");window.location="index.php"</script>';
 }
 $kode_booking = $_GET['id'];
