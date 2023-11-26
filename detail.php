@@ -29,13 +29,13 @@ $isi = mysqli_fetch_assoc($hasil);
                         <li class="list-group-item" style="text-transform:uppercase;">
                             <b><?= $isi['212303_nama']; ?></b>
                         </li>
-                        <?php if ($isi['212303_status'] == 'Tersedia') { ?>
+                        <?php if ($isi['212303_stok'] >= 1 ) { ?>
                             <li class="list-group-item bg-primary text-white">
-                                <i class="fa fa-check"></i> Available
+                                <i class="fa fa-check"></i> Sisa <?= $isi['212303_stok']; ?> Pcs
                             </li>
                         <?php } else { ?>
                             <li class="list-group-item bg-danger text-white">
-                                <i class="fa fa-close"></i> Not Available
+                                <i class="fa fa-close"></i> Kosong
                             </li>
                         <?php } ?>
                         <!-- MENAMPILKAN HARGA PADA HALAMAN DETAILS -->

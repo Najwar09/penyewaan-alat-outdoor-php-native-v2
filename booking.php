@@ -58,6 +58,10 @@ $isi = mysqli_fetch_assoc($hasil);
                             <input type="text" name="no_tlp" id="" required class="form-control" placeholder="Telepon">
                         </div>
                         <div class="form-group">
+                            <label for="">Jumlah Sewa Alat</label>
+                            <input type="number" name="jml_sewa" id="" required class="form-control" placeholder="Jumlah">
+                        </div>
+                        <div class="form-group">
                             <label for="">Tanggal Sewa</label>
                             <input type="date" name="tanggal" id="" required class="form-control" placeholder="Nama Anda">
                         </div>
@@ -69,8 +73,9 @@ $isi = mysqli_fetch_assoc($hasil);
                         <input type="hidden" value="<?php echo $_SESSION['user']['212303_id_login']; ?>" name="id_login">
                         <input type="hidden" value="<?php echo $isi['212303_id_alat']; ?>" name="id_alat">
                         <input type="hidden" value="<?php echo $isi['212303_harga']; ?>" name="total_harga">
+                        <input type="hidden" value="<?php echo $isi['212303_stok']; ?>" name="stok">
                         <hr />
-                        <?php if ($isi['212303_status'] == 'Tersedia') { ?>
+                        <?php if ($isi['212303_stok'] >= 1) { ?>
                             <button type="submit" class="btn btn-primary float-right">Booking Now</button>
                         <?php } else { ?>
                             <button type="submit" class="btn btn-danger float-right" disabled>Booking Now</button>

@@ -41,7 +41,7 @@ include '../../koneksi.php';
                                 <td><img src="../../images/<?= $isi['212303_gambar']; ?>" class="img-fluid" style="width:200px;"></td>
                                 <td><?php echo $isi['212303_nama']; ?></td>
                                 <td><?php echo $isi['212303_harga']; ?></td>
-                                <td><?php echo $isi['212303_status']; ?></td>
+                                <td><?php echo $isi['212303_stok']; ?></td>
                                 <td><?php echo $isi['212303_deskripsi']; ?></td>
                                 <td>
                                     <a class="btn btn-primary btn-sm" href="edit.php?id=<?php echo $isi['212303_id_alat']; ?>" role="button">Edit</a>

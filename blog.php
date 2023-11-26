@@ -28,13 +28,13 @@ $hasil = mysqli_query($koneksi, $query);
                                 <li class="list-group-item" style="text-transform:uppercase;">
                                     <b><?= $isi['212303_nama']; ?></b>
                                 </li>
-                                <?php if ($isi['212303_status'] == 'Tersedia') { ?>
+                                <?php if ($isi['212303_stok'] >= 0) { ?>
                                     <li class="list-group-item bg-primary text-white">
-                                        <i class="fa fa-check"></i> Available
+                                        <i class="fa fa-check"></i> Sisa <?= $isi['212303_stok']; ?> Pcs
                                     </li>
                                 <?php } else { ?>
                                     <li class="list-group-item bg-danger text-white">
-                                        <i class="fa fa-close"></i> Not Available
+                                        <i class="fa fa-close"></i> Kosong
                                     </li>
                                 <?php } ?>
                                 <li class="list-group-item bg-dark text-white">
@@ -43,7 +43,11 @@ $hasil = mysqli_query($koneksi, $query);
                             </ul>
                             <div class="card-body">
                                 <center>
-                                    <a href="booking.php?id=<?php echo $isi['212303_id_alat']; ?>" class="btn btn-success">Booking now!</a>
+                                    <?php if ($isi['212303_stok'] >= 1) {   ?>
+                                        <a href="booking.php?id=<?php echo $isi['212303_id_alat']; ?>" class="btn btn-success">Booking now!</a>
+                                    <?php } else { ?>
+                                        <input type="button" class="btn btn-success text-light" value="Booking Now!" disabled>
+                                    <?php } ?>
                                     <a href="detail.php?id=<?php echo $isi['212303_id_alat']; ?>" class="btn btn-info">Detail</a>
                                 </center>
                             </div>

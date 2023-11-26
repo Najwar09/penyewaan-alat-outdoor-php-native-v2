@@ -23,11 +23,11 @@ if ($_GET['aksi'] == 'tambah') {
 
             $harga = $_POST['harga'];
             $deskripsi = $_POST['deskripsi'];
-            $status = $_POST['status'];
+            $stok = $_POST['stok'];
             $gambar = $newfilename;
             $nama = $_POST['nama'];
 
-            $query = "INSERT INTO tbl_alat_212303 VALUES('','$nama','$harga','$deskripsi','$status','$gambar')";
+            $query = "INSERT INTO tbl_alat_212303 VALUES('','$nama','$harga','$deskripsi','$stok','$gambar')";
             mysqli_query($koneksi, $query);
 
             echo '<script>alert("Data berhasil di tambahkan!");window.location="index.php";</script>';
@@ -50,7 +50,7 @@ if ($_GET['aksi'] == 'edit') {
 
     $harga = $_POST['harga'];
     $deskripsi = $_POST['deskripsi'];
-    $status = $_POST['status'];
+    $stok = $_POST['stok'];
 
     if ($_FILES['gambar']["size"] > 0) {
         if ($_FILES['gambar']["error"] > 0) {
@@ -78,7 +78,7 @@ if ($_GET['aksi'] == 'edit') {
     }
 
     
-    $query = "UPDATE tbl_alat_212303 SET 212303_harga='$harga',212303_deskripsi='$deskripsi', 212303_status='$status', 212303_gambar='$gambar' WHERE 212303_id_alat = '$id_alat'";
+    $query = "UPDATE tbl_alat_212303 SET 212303_harga='$harga',212303_deskripsi='$deskripsi', 212303_stok='$stok', 212303_gambar='$gambar' WHERE 212303_id_alat = '$id_alat'";
     $hasil = mysqli_query($koneksi,$query);
     echo '<script>alert("sukses");window.location="index.php"</script>';
 

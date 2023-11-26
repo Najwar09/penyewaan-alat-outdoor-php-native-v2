@@ -42,16 +42,16 @@ $unik  = random_int(100, 999);
 
                 <ul class="list-group list-group-flush">
 
-                    <?php if ($isi2['212303_status'] == 'Tersedia') { ?>
+                    <?php if ($isi2['212303_stok'] >= 1) { ?>
 
                         <li class="list-group-item bg-primary text-white">
-                            <i class="fa fa-check"></i> Available
+                            <i class="fa fa-check"></i> Sisa <?= $isi2['212303_stok']; ?> Pcs
                         </li>
 
                     <?php } else { ?>
 
                         <li class="list-group-item bg-danger text-white">
-                            <i class="fa fa-close"></i> Not Available
+                            <i class="fa fa-close"></i> Kosong
                         </li>
 
                     <?php } ?>
@@ -88,6 +88,11 @@ $unik  = random_int(100, 999);
                             <td>telepon </td>
                             <td> :</td>
                             <td><?php echo $isi['212303_no_telp']; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Sewa Stok </td>
+                            <td> :</td>
+                            <td><?php echo $isi['212303_jml_sewa']; ?> Pcs</td>
                         </tr>
                         <tr>
                             <td>Tanggal Sewa </td>

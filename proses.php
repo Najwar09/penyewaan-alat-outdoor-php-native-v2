@@ -81,14 +81,27 @@ if ($_GET['id'] == 'booking') {
     $nama = $_POST['nama'];
     $alamat = $_POST['alamat'];
     $no_tlp = $_POST['no_tlp'];
+    $jml_sewa = $_POST['jml_sewa'];
     $tanggalsewa = $_POST['tanggal'];
     $tanggal_pengembalian = $_POST['tanggal_kembali'];
     $total_bayar = $total_harga;
     $konfirmasi = "Belum Bayar";
     $tanggal_inp = date('Y-m-d');
 
-    $query = "INSERT INTO tbl_booking_212303 VALUES('','$kode_booking','$id_login','$id_alat','$nama','$alamat','$ktp','$no_tlp','$tanggalsewa','$tanggal_pengembalian','$total_bayar','$konfirmasi','$tanggal_inp')";
+    $stok = $_POST['stok'];
+    $sisa_stok =$stok - $jml_sewa;
+
+
+
+
+    $query = "INSERT INTO tbl_booking_212303 VALUES('','$kode_booking','$id_login','$id_alat','$nama','$alamat','$ktp','$no_tlp','$jml_sewa','$tanggalsewa','$tanggal_pengembalian','$total_bayar','$konfirmasi','$tanggal_inp')";
     $hasil = mysqli_query($koneksi, $query);
+
+    $query2 ="UPDATE tbl_alat_212303 SET 212303_stok = '$sisa_stok' WHERE 212303_id_alat = '$id_alat'";
+    $hasil2 = mysqli_query($koneksi, $query2);
+
+
+
     echo '<script>alert("Anda Sukses Booking silahkan Melakukan Pembayaran");
     window.location="bayar.php?id=' . time() . '";</script>';
 }

@@ -43,12 +43,8 @@ include '../../koneksi.php';
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-sm-3"><b>Status</b></label>
-                                <select class="form-control col-sm-9" name="status">
-                                    <option value="" disabled selected>Pilih Status</option>
-                                    <option>Tersedia</option>
-                                    <option>Tidak Tersedia</option>
-                                </select>
+                                <label class="col-sm-3"><b>Stok</b></label>
+                                <input type="number" class="form-control col-sm-9" name="stok" placeholder="Isi Stok">
                             </div>
 
                             <div class="form-group row">

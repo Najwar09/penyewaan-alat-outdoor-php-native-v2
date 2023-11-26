@@ -42,15 +42,8 @@ $isi = mysqli_fetch_assoc($hasil);
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-sm-3">Status</label>
-                                <select class="form-control col-sm-9" name="status">
-                                    <option <?php if ($isi['212303_status'] == 'Tersedia') {
-                                                echo 'selected';
-                                            } ?>>Tersedia</option>
-                                    <option <?php if ($isi['212303_status'] == 'Tidak Tersedia') {
-                                                echo 'selected';
-                                            } ?>>Tidak Tersedia</option>
-                                </select>
+                                <label class="col-sm-3">Stok</label>
+                                <input type="number" class="form-control col-sm-9" name="stok" placeholder="Isi Stok" value="<?= $isi['212303_stok']; ?>">
                             </div>
 
                             <div class="form-group row">
