@@ -42,6 +42,7 @@ $hasil = mysqli_query($koneksi,$query);
                         <th>No. </th>
                         <th>Kode Booking</th>
                         <th>Nama </th>
+                        <th>Barang </th>
                         <th>Tanggal Sewa </th>
                         <th>Tanggal Kembali </th>
                         <th>Total Harga</th>
@@ -56,6 +57,7 @@ $hasil = mysqli_query($koneksi,$query);
                             <td><?php echo $no; ?></td>
                             <td><?= $isi['212303_kode_booking']; ?></td>
                             <td><?= $isi['212303_nama']; ?></td>
+                            <td><?= $isi['212303_jml_sewa']; ?></td>
                             <td><?= $isi['212303_tgl_sewa']; ?></td>
                             <td><?= $isi['212303_tgl_kmb']; ?></td>
                             <td>Rp. <?= number_format($isi['212303_total_bayar']); ?></td>

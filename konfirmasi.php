@@ -27,7 +27,7 @@ $isi2 = mysqli_fetch_assoc($hasil2);
                     <center>
                         <h3>Pembayaran Dapat Melalui :</h3>
                         <hr />
-                        <p> BRI 2132131246 A/N Rental Dirga </p>
+                        <p> BRI 489101004526502 A/N MUTIARA RAMADHANI </p>
                     </center>
 
                 </div>

@@ -28,7 +28,7 @@ $hasil = mysqli_query($koneksi, $query);
                                 <li class="list-group-item" style="text-transform:uppercase;">
                                     <b><?= $isi['212303_nama']; ?></b>
                                 </li>
-                                <?php if ($isi['212303_stok'] >= 0) { ?>
+                                <?php if ($isi['212303_stok'] >= 1) { ?>
                                     <li class="list-group-item bg-primary text-white">
                                         <i class="fa fa-check"></i> Sisa <?= $isi['212303_stok']; ?> Pcs
                                     </li>

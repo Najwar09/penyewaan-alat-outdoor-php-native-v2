@@ -62,6 +62,8 @@ if ($_GET['id'] == 'login') {
 
 // booking
 if ($_GET['id'] == 'booking') {
+
+
     $tanggalAwal = $_POST['tanggal'];
     $tanggalAkhir = $_POST['tanggal_kembali'];
 
@@ -72,7 +74,7 @@ if ($_GET['id'] == 'booking') {
 
 
     $total = $_POST['total_harga'] * $selisih;
-    $total_harga = $total;
+    $total_harga = $total * $_POST['jml_sewa'];
 
     $kode_booking = time();
     $id_login = $_POST['id_login'];
@@ -89,22 +91,29 @@ if ($_GET['id'] == 'booking') {
     $tanggal_inp = date('Y-m-d');
 
     $stok = $_POST['stok'];
-    $sisa_stok =$stok - $jml_sewa;
+    $sisa_stok = $stok - $jml_sewa;
+
+    if ($jml_sewa <= $stok && $jml_sewa >= 1) {
+        $query = "INSERT INTO tbl_booking_212303 VALUES('','$kode_booking','$id_login','$id_alat','$nama','$alamat','$ktp','$no_tlp','$jml_sewa','$tanggalsewa','$tanggal_pengembalian','$total_bayar','$konfirmasi','$tanggal_inp')";
+        $hasil = mysqli_query($koneksi, $query);
+    
+        $query2 = "UPDATE tbl_alat_212303 SET 212303_stok = '$sisa_stok' WHERE 212303_id_alat = '$id_alat'";
+        $hasil2 = mysqli_query($koneksi, $query2);
+            echo '<script>alert("Anda Sukses Booking silahkan Melakukan Pembayaran");
+        window.location="bayar.php?id=' . $kode_booking . '";</script>';
+    }else{
+        echo '<script>alert("barang tidak cukup!");history.back();</script>';
+    }
 
 
 
 
-    $query = "INSERT INTO tbl_booking_212303 VALUES('','$kode_booking','$id_login','$id_alat','$nama','$alamat','$ktp','$no_tlp','$jml_sewa','$tanggalsewa','$tanggal_pengembalian','$total_bayar','$konfirmasi','$tanggal_inp')";
-    $hasil = mysqli_query($koneksi, $query);
-
-    $query2 ="UPDATE tbl_alat_212303 SET 212303_stok = '$sisa_stok' WHERE 212303_id_alat = '$id_alat'";
-    $hasil2 = mysqli_query($koneksi, $query2);
 
 
 
-    echo '<script>alert("Anda Sukses Booking silahkan Melakukan Pembayaran");
-    window.location="bayar.php?id=' . time() . '";</script>';
 }
+
+
 
 if ($_GET['id'] == 'konfirmasi') {
 
@@ -125,12 +134,13 @@ if ($_GET['id'] == 'konfirmasi') {
         exit();
     } else {
         if (move_uploaded_file($tmp_name, $target_path)) {
-
+            session_start();
+            $id_login = $_SESSION['user']['212303_id_login'];
             $id_booking = $_POST['id_booking'];
             $gambar = $newfilename;
 
 
-            $query = "INSERT INTO tbl_pembayaran_212303 VALUES('','$id_booking','$gambar')";
+            $query = "INSERT INTO tbl_pembayaran_212303 VALUES('','$id_login','$id_booking','$gambar')";
             mysqli_query($koneksi, $query);
 
             $konfirmasi = 'Sedang di proses';

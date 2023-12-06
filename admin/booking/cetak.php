@@ -42,6 +42,7 @@ $isi2 = mysqli_fetch_assoc($hasil2);
                 <th scope="col">No</th>
                 <th scope="col">Kode Booking</th>
                 <th scope="col">Nama</th>
+                <th scope="col">Barang </th>
                 <th scope="col">Tanggal Sewa</th>
                 <th scope="col">Tanggal Kembali</th>
                 <th scope="col">Total Harga</th>
@@ -54,6 +55,7 @@ $isi2 = mysqli_fetch_assoc($hasil2);
                 <th scope="row">1</th>
                 <td><?php echo $isi['212303_kode_booking']; ?></td>
                 <td><?php echo $isi['212303_nama']; ?></td>
+                <td><?php echo $isi['212303_jml_sewa']; ?></td>
                 <td><?php echo $isi['212303_tgl_sewa']; ?></td>
                 <td><?php echo $isi['212303_tgl_kmb']; ?></td>
                 <td>Rp. <?= number_format($isi['212303_total_bayar']); ?></td>

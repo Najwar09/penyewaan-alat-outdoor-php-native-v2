@@ -16,7 +16,7 @@ $query2 = "SELECT * FROM tbl_alat_212303 WHERE 212303_id_alat = '$id_alat'";
 $hasil2 = mysqli_query($koneksi,$query2);
 $isi2 = mysqli_fetch_assoc($hasil2);
 
-$unik  = random_int(100, 999);
+$unik = mt_rand(100, 999);
 
 ?>
 <br>
@@ -30,7 +30,7 @@ $unik  = random_int(100, 999);
                 <div class="card-body text-center">
                     <h5>Pembayaran Dapat Melalui :</h5>
                     <hr />
-                    <p>BRI / 4389483984.AHMAD</p>
+                    <p>BRI / 489101004526502 - MUTIARA RAMADHANI</p>
                 </div>
             </div>
             <br />

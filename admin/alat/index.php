@@ -23,7 +23,7 @@ include '../../koneksi.php';
                             <th>Gambar</th>
                             <th>Nama</th>
                             <th>Harga</th>
-                            <th>Status</th>
+                            <th>Stok</th>
                             <th>Deskripsi</th>
                             <th>Aksi</th>
                         </tr>
