@@ -9,21 +9,28 @@ if (empty($_SESSION['user'])) {
 
 
 $id_user = $_SESSION['user']['212303_id_login'];
-$query = "SELECT 
-booking.212303_kode_booking,
-booking.212303_nama AS 212303_nama1,
-alat.212303_nama,
-booking.212303_jml_sewa,
-booking.212303_total_bayar,
-booking.212303_konfirmasi
-FROM 
-tbl_booking_212303 AS booking
-INNER JOIN 
-tbl_alat_212303 AS alat ON booking.212303_id_alat = alat.212303_id_alat WHERE 212303_id_login = '$id_user'";
+$query = "SELECT
+bk.212303_kode_booking,
+bk.212303_nama AS 212303_nama1,
+al.212303_nama,
+bk.212303_jml_sewa,
+bk.212303_total_bayar,
+bk.212303_konfirmasi,
+pb.212303_gambar
+FROM
+tbl_booking_212303 AS bk
+INNER JOIN
+tbl_login_212303 AS lg ON bk.212303_id_login = lg.212303_id_login
+INNER JOIN
+tbl_alat_212303 AS al ON bk.212303_id_alat = al.212303_id_alat
+INNER JOIN
+tbl_pembayaran_212303 AS pb ON bk.212303_id_booking = pb.212303_id_booking
+WHERE
+lg.212303_id_login = $id_user";
 
 $hasil = mysqli_query($koneksi, $query);
 
-?> 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,22 +53,25 @@ $hasil = mysqli_query($koneksi, $query);
                 <th>Jumlah</th>
                 <th>Total Bayar</th>
                 <th>Konfirmasi</th>
+                <th>Gambar</th>
             </thead>
             <tbody>
-            <?php
+                <?php
                 $no = 1;
                 foreach ($hasil as $isi) {
                 ?>
-                <tr class="table-active">
-                    <th scope="row"><?= $no; ?></th>
-                    <td><?= $isi['212303_kode_booking']; ?></td>
-                    <td><?= $isi['212303_nama1']; ?></td>
-                    <td><?= $isi['212303_nama']; ?></td>
-                    <td><?= $isi['212303_jml_sewa']; ?></td>
-                    <td>Rp. <?= number_format($isi['212303_total_bayar']); ?></td>
-                    <td><?= $isi['212303_konfirmasi']; ?></td>
-                </tr>
-                <?php $no++; } ?>
+                    <tr class="table-active">
+                        <th scope="row"><?= $no; ?></th>
+                        <td><?= $isi['212303_kode_booking']; ?></td>
+                        <td><?= $isi['212303_nama1']; ?></td>
+                        <td><?= $isi['212303_nama']; ?></td>
+                        <td><?= $isi['212303_jml_sewa']; ?></td>
+                        <td>Rp. <?= number_format($isi['212303_total_bayar']); ?></td>
+                        <td><?= $isi['212303_konfirmasi']; ?></td>
+                        <td><img src="images/<?= $isi['212303_gambar']; ?>" alt="" width="200px"></td>
+                    </tr>
+                <?php $no++;
+                } ?>
             </tbody>
         </table>
     </div>
